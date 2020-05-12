@@ -44,4 +44,42 @@ class CustomerTest {
                 "Amount owed is 0.0\n" +
                 "You earned 1 frequent renter points"));
     }
+
+    @Test
+    void customerHtmlTest1() {
+        Movie m1 = new Movie("movie1", 1);
+        Movie m2 = new Movie("movie2", 2);
+
+        Rental r1 = new Rental(m1, 10);
+        Rental r2 = new Rental(m2, 5);
+
+        Customer c1 = new Customer("joe");
+        c1.addRental(r1);
+        c1.addRental(r2);
+
+        String result = c1.htmlStatement();
+
+        assertThat(result, is("<H1>Rentals for <EM>joe</EM></H1><P>\n" +
+                "movie1: 30.0<BR>\n" +
+                "movie2: 4.5<BR>\n" +
+                "<P>You owe <EM>34.5</EM><P>\n" +
+                "On this rental you earned <EM>3</EM> frequent renter points<P> "));
+    }
+
+    @Test
+    void customerHtmlTest2() {
+        Movie m1 = new Movie("movie1", 3);
+
+        Rental r1 = new Rental(m1, 20);
+
+        Customer c1 = new Customer("john");
+        c1.addRental(r1);
+
+        String result = c1.htmlStatement();
+
+        assertThat(result, is("<H1>Rentals for <EM>john</EM></H1><P>\n" +
+                "movie1: 0.0<BR>\n" +
+                "<P>You owe <EM>0.0</EM><P>\n" +
+                "On this rental you earned <EM>1</EM> frequent renter points<P> "));
+    }
 }
