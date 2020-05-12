@@ -18,20 +18,20 @@ class Customer {
     }
 
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
         Enumeration<Rental> enum_rentals = rentals.elements();
         String result = "Rental Record for " + this.getName() + "\n";
         result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
+        double totalAmount = 0;
+        int frequentRenterPoints = 0;
+
         while (enum_rentals.hasMoreElements()) {
-            double thisAmount = 0;
-            Rental each = enum_rentals.nextElement();
+            Rental rental = enum_rentals.nextElement();
             //determine amounts for each line
-            thisAmount = each.getCharge();
-            frequentRenterPoints += each.getFrequentRenterPoints();
+            double thisAmount = rental.getCharge();
+            frequentRenterPoints += rental.getFrequentRenterPoints();
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(thisAmount) + "\n";
+            result += "\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t" + String.valueOf(thisAmount) + "\n";
             totalAmount += thisAmount;
         }
         //add footer lines
