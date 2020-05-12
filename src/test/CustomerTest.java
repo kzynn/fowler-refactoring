@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-class CustomerTest {
+public class CustomerTest {
 
     @Test
     void customerTest1() {
@@ -29,7 +29,7 @@ class CustomerTest {
 
     @Test
     void customerTest2() {
-        Movie m1 = new Movie("movie1", 3);
+        Movie m1 = new Movie("movie1", 0);
 
         Rental r1 = new Rental(m1, 20);
 
@@ -40,8 +40,8 @@ class CustomerTest {
 
         assertThat(result, is("Rental Record for john\n" +
                 "\tTitle\t\tDays\tAmount\n" +
-                "\tmovie1\t\t20\t0.0\n" +
-                "Amount owed is 0.0\n" +
+                "\tmovie1\t\t20\t29.0\n" +
+                "Amount owed is 29.0\n" +
                 "You earned 1 frequent renter points"));
     }
 
@@ -68,7 +68,7 @@ class CustomerTest {
 
     @Test
     void customerHtmlTest2() {
-        Movie m1 = new Movie("movie1", 3);
+        Movie m1 = new Movie("movie1", 0);
 
         Rental r1 = new Rental(m1, 20);
 
@@ -78,8 +78,8 @@ class CustomerTest {
         String result = c1.htmlStatement();
 
         assertThat(result, is("<H1>Rentals for <EM>john</EM></H1><P>\n" +
-                "movie1: 0.0<BR>\n" +
-                "<P>You owe <EM>0.0</EM><P>\n" +
+                "movie1: 29.0<BR>\n" +
+                "<P>You owe <EM>29.0</EM><P>\n" +
                 "On this rental you earned <EM>1</EM> frequent renter points<P> "));
     }
 }
