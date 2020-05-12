@@ -1,3 +1,5 @@
+package java;
+
 public class Movie {
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;
@@ -30,7 +32,7 @@ public class Movie {
         return title;
     }
 
-    double getCharge(int daysRented) {
+    public double getCharge(int daysRented) {
         return price.getCharge(daysRented);
     }
 

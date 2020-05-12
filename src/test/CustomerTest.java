@@ -1,4 +1,10 @@
+package test;
+
 import org.junit.jupiter.api.Test;
+
+import java.Customer;
+import java.Movie;
+import java.Rental;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -6,7 +12,7 @@ import static org.hamcrest.Matchers.is;
 public class CustomerTest {
 
     @Test
-    void customerTest1() {
+    public void customerTest1() {
         Movie m1 = new Movie("movie1", 1);
         Movie m2 = new Movie("movie2", 2);
 
@@ -28,7 +34,7 @@ public class CustomerTest {
     }
 
     @Test
-    void customerTest2() {
+    public void customerTest2() {
         Movie m1 = new Movie("movie1", 0);
 
         Rental r1 = new Rental(m1, 20);
@@ -46,7 +52,7 @@ public class CustomerTest {
     }
 
     @Test
-    void customerHtmlTest1() {
+    public void customerHtmlTest1() {
         Movie m1 = new Movie("movie1", 1);
         Movie m2 = new Movie("movie2", 2);
 
@@ -67,7 +73,7 @@ public class CustomerTest {
     }
 
     @Test
-    void customerHtmlTest2() {
+    public void customerHtmlTest2() {
         Movie m1 = new Movie("movie1", 0);
 
         Rental r1 = new Rental(m1, 20);
