@@ -1,5 +1,5 @@
-import java.lang.*;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Vector;
 
 public class Customer {
     private String name;
@@ -19,31 +19,32 @@ public class Customer {
 
     public String statement() {
         Enumeration<Rental> enumRentals = rentals.elements();
-        String result = "Rental Record for " + this.getName() + "\n";
-        result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
+        StringBuilder resultBuilder = new StringBuilder("Rental Record for ").append(this.getName()).append("\n");
+        resultBuilder.append("\tTitle\t\tDays\tAmount\n");
 
         while (enumRentals.hasMoreElements()) {
             Rental rental = enumRentals.nextElement();
-            result += "\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t" + String.valueOf(rental.getCharge()) + "\n";
+            resultBuilder.append("\t").append(rental.getMovie().getTitle()).append("\t\t").append(rental.getDaysRented()).append("\t").append(rental.getCharge()).append("\n");
         }
         //add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
-        return result;
+        resultBuilder.append("Amount owed is ").append(getTotalCharge()).append("\n");
+        resultBuilder.append("You earned ").append(getTotalFrequentRenterPoints()).append(" frequent renter points");
+        return resultBuilder.toString();
     }
 
     public String htmlStatement() {
-        Enumeration enumRentals = rentals.elements();
-        String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
+        Enumeration<Rental> enumRentals = rentals.elements();
+        StringBuilder resultBuilder = new StringBuilder("<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n");
+
         while (enumRentals.hasMoreElements()) {
-            Rental each = (Rental) enumRentals.nextElement();
+            Rental rental = enumRentals.nextElement();
             //show figures for each rental
-            result += each.getMovie().getTitle() + ": " + String.valueOf(each.getCharge()) + "<BR>\n";
+            resultBuilder.append(rental.getMovie().getTitle()).append(": ").append(rental.getCharge()).append("<BR>\n");
         }
         //add footer lines
-        result += "<P>You owe <EM>" + String.valueOf(getTotalCharge()) + "</EM><P>\n";
-        result += "On this rental you earned <EM>" + String.valueOf(getTotalFrequentRenterPoints()) + "</EM> frequent renter points<P> ";
-        return result;
+        resultBuilder.append("<P>You owe <EM>").append(getTotalCharge()).append("</EM><P>\n");
+        resultBuilder.append("On this rental you earned <EM>").append(getTotalFrequentRenterPoints()).append("</EM> frequent renter points<P> ");
+        return resultBuilder.toString();
     }
 
     private double getTotalCharge() {
