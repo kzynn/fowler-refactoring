@@ -1,4 +1,4 @@
-package java;
+package main;
 
 public class NewReleasePrice extends Price {
     @Override

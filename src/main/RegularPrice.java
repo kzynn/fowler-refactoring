@@ -1,4 +1,4 @@
-package java;
+package main;
 
 public class RegularPrice extends Price {
     @Override

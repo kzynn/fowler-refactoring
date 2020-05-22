@@ -1,13 +1,13 @@
 package test;
 
-import org.junit.jupiter.api.Test;
-
-import java.Customer;
-import java.Movie;
-import java.Rental;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+
+import org.junit.jupiter.api.Test;
+
+import main.Customer;
+import main.Movie;
+import main.Rental;
 
 public class CustomerTest {
 
